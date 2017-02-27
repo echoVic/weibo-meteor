@@ -1,0 +1,25 @@
+<template name="index">
+    {{#if currentUser}}
+        <form class="well form-inline center" style="text-align: center;">
+            <input type="text" class="span8" id="post">
+            <button id="submit" class="btn btn-success"><i class="icon-comment icon-white"></i>发表</button>
+        </form>
+    {{/if}}
+    <div class="hero-unit">
+        <p>weibo 是一个基于 Meteor 的微博系统。</p>
+        <p>
+            {{#if currentUser}}
+                <a href="/logout" class="btn btn-info btn-large">登出</a>
+            {{else}}
+                <a href="/login" class="btn btn-primary btn-large">登录</a>
+                <a href="/reg" class="btn btn-large">注册</a>
+            {{/if}}
+        </p>
+    </div>
+
+    {{#each posts}}
+        <h2>{{user.username}} 说</h2>
+        <p class="muted">{{time}}}</p>
+        <p>{{#markdown}}{{post}}{{/markdown}}</p>
+    {{/each}}
+</template>
